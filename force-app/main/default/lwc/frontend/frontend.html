@@ -1,0 +1,7 @@
+<template>
+    <div class="container">
+        <lightning-textarea name="inputText" label="Enter Text" value={inputText} onchange={handleTextChange}></lightning-textarea>
+        <lightning-button label="Generate Text" onclick={handleClick} class="slds-m-top_small"></lightning-button>
+        <p>{generatedText}</p>
+    </div>
+</template>
