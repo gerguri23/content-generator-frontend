@@ -1,6 +1,13 @@
 <template>
     <div class="container">
-        <lightning-textarea name="inputText" label="Enter Text" value={inputText} onchange={handleTextChange}></lightning-textarea>
+        <lightning-textarea name="inputText" label="Enter Topic" value={inputText} onchange={handleTextChange}></lightning-textarea>
+        
+        <lightning-combobox name="contentType" label="Content Type" value={userContentType} options={contentTypeOptions} onchange={handleContentTypeChange}></lightning-combobox>
+        
+        <lightning-slider label="Temperature" value={userTemperature} min="0" max="2" step="0.1" onchange={handleTemperatureChange}></lightning-slider>
+        
+        <lightning-combobox name="recipient" label="Recipient" value={userRecipient} options={recipientOptions} onchange={handleRecipientChange}></lightning-combobox>
+        
         <lightning-button label="Generate Text" onclick={handleClick} class="slds-m-top_small"></lightning-button>
         <p>{generatedText}</p>
     </div>
