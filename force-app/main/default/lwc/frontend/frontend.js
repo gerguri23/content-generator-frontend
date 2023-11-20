@@ -52,6 +52,18 @@ export default class MyComponent extends LightningElement {
 
     async callBackend() {
         try {
+             
+            this.generatedText = "Loading...";
+
+            // Simulate the delay to show the loading state  using Promise()
+            new Promise((resolve) => {
+              setTimeout(() => resolve(), 2000);
+            }).then(() => {
+              console.log(
+                "The loading time is taking a bit longer that it supposed!"
+              );
+            });
+
             const response = await fetch('https://fluido-content-generator.azurewebsites.net/generate-text', {
                 method: 'POST',
                 headers: {
