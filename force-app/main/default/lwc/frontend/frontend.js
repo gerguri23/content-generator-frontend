@@ -6,6 +6,7 @@ export default class MyComponent extends LightningElement {
     @track userContentType = 'email';
     @track userTemperature = 1.0;
     @track userRecipient = 'sales';
+    @track userIndustry = 'business services';
 
     get contentTypeOptions() {
         return [
@@ -29,6 +30,25 @@ export default class MyComponent extends LightningElement {
         ];
     }
 
+    get industryOptions() {
+        return [
+            { label: 'Business Services', value: 'business services' },
+            { label: 'Communications and Media', value: 'communications and media' },
+            { label: 'Construction', value: 'construction' },
+            { label: 'Consumer Goods, Retail and Logistics', value: 'consumer goods, retail and logistics' },
+            { label: 'Communications and Media', value: 'communications and media' },
+            { label: 'Education', value: 'education' },
+            { label: 'Energy and Utilities', value: 'energy and utilities' },
+            { label: 'Finance', value: 'finance' },
+            { label: 'Healthcare and Lifescience', value: 'healthcare and lifescience' },
+            { label: 'Hospitality and Recreation', value: 'hospitality and recreation' },
+            { label: 'Manufacturing', value: 'manufacturing' },
+            { label: 'Not For Profit', value: 'not for profit' },
+            { label: 'Public', value: 'public' },
+            { label: 'Technology', value: 'technology' },
+            { label: 'Telecommunications', value: 'telecommunications' }
+        ];
+    }
 
     handleTextChange(event) {
         this.inputText = event.target.value;
@@ -44,6 +64,10 @@ export default class MyComponent extends LightningElement {
 
     handleRecipientChange(event) {
         this.userRecipient = event.target.value;
+    }
+
+    handleIndustryChange(event) {
+        this.userIndustry = event.target.value;
     }
 
     handleClick() {
@@ -74,6 +98,7 @@ export default class MyComponent extends LightningElement {
                     userContentType: this.userContentType,
                     userTemperature: this.userTemperature,
                     userRecipient: this.userRecipient,
+                    userIndustry: this.userIndustry,
                 }),
             });
 
