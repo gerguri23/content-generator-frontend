@@ -1,6 +1,9 @@
 import { LightningElement, track } from 'lwc';
+import FrontEnd from './frontend.css'
 
 export default class MyComponent extends LightningElement {
+    static stylesheets = [FrontEnd];
+
     @track inputText = '';
     @track generatedText = '';
     @track userContentType = 'email';
