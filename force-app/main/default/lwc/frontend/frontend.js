@@ -91,7 +91,7 @@ export default class MyComponent extends LightningElement {
               );
             });
 
-            const response = await fetch('https://fluido-content-generator.azurewebsites.net/generate-text', {
+            const response = await fetch('https://marketing-content-generator-02c05e08f82e.herokuapp.com/generate-text', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
