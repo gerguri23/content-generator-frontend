@@ -107,6 +107,8 @@ export default class MyComponent extends LightningElement {
             });
 
             const data = await response.json();
+            //Testi
+            console.log('Response from backend:', data);
             this.generatedText = data.text;
             this.adobeStockLink = data.adobeStockLink;
 
