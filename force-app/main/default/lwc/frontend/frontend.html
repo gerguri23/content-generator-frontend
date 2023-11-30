@@ -1,41 +1,33 @@
 <template>
     <div class="preview-content slds-grid slds-grid_vertical-align-center slds-grid_align-center">
-        <div class=" container">
+        <div class="container">
             <div class="slds-p-vertical_x-small">
-            <lightning-textarea name="inputText" label="Enter Topic" value={inputText}
-                onchange={handleTextChange}></lightning-textarea>
+                <lightning-textarea name="inputText" label="Enter Topic" value={inputText} onchange={handleTextChange}></lightning-textarea>
             </div>
             <div class="slds-p-vertical_x-small">
-                <lightning-combobox name="contentType" label="Content Type" value={userContentType}
-                    options={contentTypeOptions} onchange={handleContentTypeChange}></lightning-combobox>
+                <lightning-combobox name="contentType" label="Content Type" value={userContentType} options={contentTypeOptions} onchange={handleContentTypeChange}></lightning-combobox>
             </div>
             <div class="slds-p-vertical_x-small tempStyle">
-                <lightning-slider label="Temperature" value={userTemperature} min="0" max="2" step="0.1"
-                    onchange={handleTemperatureChange}></lightning-slider>
+                <lightning-slider label="Temperature (higher value means more creative)" value={userTemperature} min="0" max="2" step="0.1" onchange={handleTemperatureChange}></lightning-slider>
             </div>
             <div class="slds-p-vertical_x-small">
-                <lightning-combobox name="recipient" label="Recipient" value={userRecipient} options={recipientOptions}
-                    onchange={handleRecipientChange}>
+                <lightning-combobox name="recipient" label="Recipient" value={userRecipient} options={recipientOptions} onchange={handleRecipientChange}>
                 </lightning-combobox>
             </div>
             <div class="slds-p-vertical_x-small">
-                <lightning-combobox name="industry" label="Industry" value={userIndustry} options={industryOptions}
-                    onchange={handleIndustryChange}></lightning-combobox>
+                <lightning-combobox name="industry" label="Industry" value={userIndustry} options={industryOptions} onchange={handleIndustryChange}></lightning-combobox>
             </div>
             <div class="slds-m-bottom_large">
-                <lightning-button label="Generate Text" onclick={handleClick}
-                    class="slds-button slds-var-m-top_medium ">
+                <lightning-button label="Generate Text" onclick={handleClick} class="slds-button slds-var-m-top_medium">
                 </lightning-button>
             </div>
-            <!-- <p>{generatedText}</p>-->
 
+            <!-- Render generatedText with HTML formatting -->
             <div class="cardText">
-
                 <div slot="footer" class="slds-p-horizontal_small">
-                    <p>{generatedText}</p>
+                    <lightning-formatted-rich-text value={generatedText}></lightning-formatted-rich-text>
                     <p>{adobeStockLink}</p>
                 </div>
-
             </div>
 
         </div>
