@@ -10,6 +10,7 @@ export default class MyComponent extends LightningElement {
     @track userTemperature = 1.0;
     @track userRecipient = 'sales';
     @track userIndustry = 'business services';
+    @track adobeStockLink = '';
 
     get contentTypeOptions() {
         return [
@@ -107,9 +108,15 @@ export default class MyComponent extends LightningElement {
 
             const data = await response.json();
             this.generatedText = data.text;
+            this.adobeStockLink = data.adobeStockLink;
+
+           
+
+            
         } catch (error) {
             console.error('Error:', error);
             this.generatedText = 'Error generating text';
+            this.adobeStockLink = 'Error generating the link';
         }
     }
 }
