@@ -7,19 +7,18 @@
  width:100vh;
 }
 
-.buttonSextion{
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-  margin-top: 20px;
-}
 .cardText {
+  width: 100%;
   max-width: 100%; /* Ensure the container does not exceed the width of its parent */
+  margin:0 auto; /* Center the container */
   padding: 0 20px;
+  overflow: auto; /* Enable scrolling if content overflows */
+    max-height: 100%; /* Set a maximum height as needed */
+  background-color: rgb(240, 240, 240);
+  color: black;
+  border-radius: 15px;
 }
-
-.temStyle{
-  box-shadow: 0 0 0 3px hsla(var(--input-focus-h), var(--input-focus-s), calc(var(--input-focus-l) +
-  40%), 0.8);
+.cardText .button {
+  padding-bottom: 5px;
 }
 

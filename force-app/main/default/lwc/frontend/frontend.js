@@ -76,14 +76,26 @@ export default class MyComponent extends LightningElement {
 
     handleClick() {
         this.callBackend();
-    }
 
+    }
+    textCallBack(){
+        this.handleCopy();
+        alert("Texted is copied");
+    }
+    async handleCopy() {
+        let msg = `Copied Text is:  \n ${this.generatedText} 
+        \nAdobe Stock Image Link: \n ${this.adobeStockLink}`;
+    
+        if (navigator.clipboard && window.isSecureContext) {
+          return navigator.clipboard.writeText(msg.replace(/<br\s*[/]?>/gi, '').replace(/<b\s*[/]?>/gi, '').replace(/<\/b\s*[/]?>/gi, ''));
+        } 
+      }
     async callBackend() {
         try {
              
             this.generatedText = "Loading...";
 
-            // Simulate the delay to show the loading state  using Promise()
+           /* // Simulate the delay to show the loading state  using Promise()
             new Promise((resolve) => {
               setTimeout(() => resolve(), 2000);
             }).then(() => {
@@ -91,7 +103,7 @@ export default class MyComponent extends LightningElement {
                 "The loading time is taking a bit longer that it supposed!"
               );
             });
-
+*/
             const response = await fetch('https://marketing-content-generator-02c05e08f82e.herokuapp.com/generate-text', {
                 method: 'POST',
                 headers: {
