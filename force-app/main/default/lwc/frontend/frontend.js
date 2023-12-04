@@ -11,6 +11,8 @@ export default class MyComponent extends LightningElement {
     @track userRecipient = 'sales';
     @track userIndustry = 'business services';
     @track adobeStockLink = '';
+    @track finalPrompt = '';
+    @track readOnly = true;
 
     get contentTypeOptions() {
         return [
@@ -56,10 +58,12 @@ export default class MyComponent extends LightningElement {
 
     handleTextChange(event) {
         this.inputText = event.target.value;
+        this.getPrompt()
     }
 
     handleContentTypeChange(event) {
         this.userContentType = event.target.value;
+        this.getPrompt()
     }
 
     handleTemperatureChange(event) {
@@ -68,10 +72,13 @@ export default class MyComponent extends LightningElement {
 
     handleRecipientChange(event) {
         this.userRecipient = event.target.value;
+        this.getPrompt()
+
     }
 
     handleIndustryChange(event) {
         this.userIndustry = event.target.value;
+        this.getPrompt()
     }
 
     handleClick() {
@@ -131,6 +138,30 @@ export default class MyComponent extends LightningElement {
             console.error('Error:', error);
             this.generatedText = 'Error generating text';
             this.adobeStockLink = 'Error generating the link';
+        }
+    }
+    async getPrompt() {
+        try {
+            const response = await fetch('https://marketing-content-generator-02c05e08f82e.herokuapp.com/check-message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    userTopic: this.inputText,
+                    userContentType: this.userContentType,
+                    userRecipient: this.userRecipient,
+                    userIndustry: this.userIndustry,
+                }),
+            });
+
+            const data = await response.json();
+            this.finalPrompt = data.text;
+            //Testi
+            console.log('Response from backend:', data);
+       } catch (error) {
+            console.error('Error:', error);
+            this.finalPrompt = "Error getting prompt";
         }
     }
 }
