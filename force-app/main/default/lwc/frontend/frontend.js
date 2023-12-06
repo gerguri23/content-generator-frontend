@@ -129,7 +129,22 @@ export default class MyComponent extends LightningElement {
             //Testi
             console.log('Response from backend:', data);
             this.generatedText = data.text;
-            this.adobeStockLink = data.adobeStockLink;
+            
+            const responseLink = await fetch('https://marketing-content-generator-02c05e08f82e.herokuapp.com/generate-query-link', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                userTopic: this.inputText,
+                userIndustry: this.userIndustry,
+                userTemperature: this.userTemperature,
+            }),
+        });
+
+        const dataLink = await responseLink.json();
+        console.log('Response from link generation:', dataLink);
+        this.adobeStockLink = dataLink.searchQuery;
 
            
 
