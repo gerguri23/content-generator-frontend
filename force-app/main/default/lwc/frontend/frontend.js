@@ -144,7 +144,13 @@ export default class MyComponent extends LightningElement {
 
         const dataLink = await responseLink.json();
         console.log('Response from link generation:', dataLink);
-        this.adobeStockLink = dataLink.searchQuery;
+        // Check if the response contains the expected property
+        if (dataLink && dataLink.searchQuery) {
+            this.adobeStockLink = dataLink.searchQuery;
+        } else {
+            console.error('Invalid response from link generation:', dataLink);
+            this.adobeStockLink = 'Error generating the link';
+        }
 
            
 
