@@ -7,7 +7,7 @@ export default class MyComponent extends LightningElement {
     @track inputText = '';
     @track generatedText = '';
     @track userContentType = 'email';
-    @track userTemperature = 1.0;
+    @track userTemperature = 0.5;
     @track userRecipient = 'sales';
     @track userIndustry = 'business services';
     @track adobeStockLink = '';
