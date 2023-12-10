@@ -1,4 +1,4 @@
-# Marketing Content Generator Frontend
+# Marketing Content Generator
 ## Overview
 This project focuses on building a frontend Content Generator with the capabilities of GPT-4. This Content Generator is an innovative tool developed for Fluido Company to enhance content creation within Salesforce Marketing Cloud. Powered by GPT-4, it seamlessly integrates with Salesforce, streamlining workflows for users and providing an efficient way to generate marketing content.
 
