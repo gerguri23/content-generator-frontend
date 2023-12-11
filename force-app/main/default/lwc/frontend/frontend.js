@@ -58,12 +58,12 @@ export default class MyComponent extends LightningElement {
 
     handleTextChange(event) {
         this.inputText = event.target.value;
-        this.getPrompt()
+        this.getPrompt();
     }
 
     handleContentTypeChange(event) {
         this.userContentType = event.target.value;
-        this.getPrompt()
+        this.getPrompt();
     }
 
     handleTemperatureChange(event) {
@@ -72,22 +72,25 @@ export default class MyComponent extends LightningElement {
 
     handleRecipientChange(event) {
         this.userRecipient = event.target.value;
-        this.getPrompt()
+        this.getPrompt();
 
     }
 
     handleIndustryChange(event) {
         this.userIndustry = event.target.value;
-        this.getPrompt()
+        this.getPrompt();
     }
 
     handleFinalPromptChange(event) {
         this.finalPrompt = event.target.value;
     }
 
-    handleClick() {
+    handleGenerateClick() {
         this.callBackend();
 
+    }
+    handlePromptClick() {
+        this.getPrompt();
     }
     textCallBack(){
         this.handleCopy();

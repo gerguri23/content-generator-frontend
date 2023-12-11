@@ -60,10 +60,14 @@
       <div class="slds-m-bottom_large">
         <lightning-button
           label="Generate Text"
-          onclick={handleClick}
+          onclick={handleGenerateClick}
           class="slds-button slds-var-m-top_medium"
-        >
-        </lightning-button>
+        ></lightning-button>
+        <lightning-button
+                label="Refresh Prompt"
+                onclick={handlePromptClick}
+                class="slds-button slds-var-m-top_medium"
+        ></lightning-button>
       </div>
 
       <!-- Render generatedText with HTML formatting -->
