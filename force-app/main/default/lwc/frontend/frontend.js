@@ -81,6 +81,10 @@ export default class MyComponent extends LightningElement {
         this.getPrompt()
     }
 
+    handleFinalPromptChange(event) {
+        this.finalPrompt = event.target.value;
+    }
+
     handleClick() {
         this.callBackend();
 
@@ -117,11 +121,8 @@ export default class MyComponent extends LightningElement {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    userTopic: this.inputText,
-                    userContentType: this.userContentType,
+                    userMessage: this.finalPrompt,
                     userTemperature: this.userTemperature,
-                    userRecipient: this.userRecipient,
-                    userIndustry: this.userIndustry,
                 }),
             });
 
