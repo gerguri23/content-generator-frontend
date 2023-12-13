@@ -22,7 +22,7 @@
       </div>
       <div class="slds-p-vertical_x-small">
           <span class="slds-m-right_x-small">Temperature</span>
-          <lightning-helptext content="Temperature controls the randomness and creativity of the generated text. 
+          <lightning-helptext class="helptext" content="Temperature controls the randomness and creativity of the generated text. 
           0: Completely deterministic. Same prompt will always produce similar output.
           0.5: More varied output, but still largely coherent. 
           1: Creative and diverse response. Higher chanche of irrelevant content."></lightning-helptext>
@@ -55,7 +55,7 @@
       </div>
       <div class="slds-p-vertical_x-small">
         <span class="slds-m-right_x-small">Final Prompt</span>
-        <lightning-helptext content="Shows the prompt that will be sent to GPT-4. Updates after each new selection/input. Can be edited by clicking on the text area. "></lightning-helptext>
+        <lightning-helptext class="helptext" content="Shows the prompt that will be sent to GPT-4. Updates after each new selection/input. Can be edited by clicking on the text area. "></lightning-helptext>
         <lightning-textarea
           name="finalPrompt"
           value={finalPrompt}
