@@ -58,12 +58,12 @@ export default class MyComponent extends LightningElement {
 
     handleTextChange(event) {
         this.inputText = event.target.value;
-        this.getPrompt()
+        this.getPrompt();
     }
 
     handleContentTypeChange(event) {
         this.userContentType = event.target.value;
-        this.getPrompt()
+        this.getPrompt();
     }
 
     handleTemperatureChange(event) {
@@ -72,18 +72,25 @@ export default class MyComponent extends LightningElement {
 
     handleRecipientChange(event) {
         this.userRecipient = event.target.value;
-        this.getPrompt()
+        this.getPrompt();
 
     }
 
     handleIndustryChange(event) {
         this.userIndustry = event.target.value;
-        this.getPrompt()
+        this.getPrompt();
     }
 
-    handleClick() {
+    handleFinalPromptChange(event) {
+        this.finalPrompt = event.target.value;
+    }
+
+    handleGenerateClick() {
         this.callBackend();
 
+    }
+    handlePromptClick() {
+        this.getPrompt();
     }
     textCallBack(){
         this.handleCopy();
@@ -117,11 +124,8 @@ export default class MyComponent extends LightningElement {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    userTopic: this.inputText,
-                    userContentType: this.userContentType,
+                    userMessage: this.finalPrompt,
                     userTemperature: this.userTemperature,
-                    userRecipient: this.userRecipient,
-                    userIndustry: this.userIndustry,
                 }),
             });
 
