@@ -18,7 +18,10 @@ export default class MyComponent extends LightningElement {
         return [
             { label: 'Email', value: 'email' },
             { label: 'Instagram', value: 'instagram' },
-            { label: 'LinkedIn', value: 'linkedin' }
+            { label: 'LinkedIn', value: 'linkedin' },
+            { label: 'White paper', value: 'whitepaper'},
+            { label: 'Blog', value: 'blog'},
+            { label: ' E-book', value: 'e-book'}
         ];
     }
 
