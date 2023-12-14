@@ -9,10 +9,12 @@ export default class MyComponent extends LightningElement {
     @track userContentType = 'email';
     @track userTemperature = 0.5;
     @track userRecipient = 'sales';
+    @track customRecipient = '';
     @track userIndustry = 'business services';
     @track adobeStockLink = '';
     @track finalPrompt = '';
     @track readOnly = true;
+    @track customRecipientDisabled = true;
 
     get contentTypeOptions() {
         return [
@@ -74,11 +76,22 @@ export default class MyComponent extends LightningElement {
     }
 
     handleRecipientChange(event) {
+        if(event.target.value === "other") {
+            this.customRecipientDisabled = false;
+            this.customRecipient = '';
+        } else {
+            this.customRecipient = '';
+            this.customRecipientDisabled = true;
+            this.userRecipient = event.target.value;
+        }
+        this.getPrompt();
+    }
+
+    handleCustomRecipientChange(event) {
         this.userRecipient = event.target.value;
         this.getPrompt();
 
     }
-
     handleIndustryChange(event) {
         this.userIndustry = event.target.value;
         this.getPrompt();
@@ -92,9 +105,11 @@ export default class MyComponent extends LightningElement {
         this.callBackend();
 
     }
+
     handlePromptClick() {
         this.getPrompt();
     }
+
     textCallBack(){
         this.handleCopy();
         alert("Texted is copied");
