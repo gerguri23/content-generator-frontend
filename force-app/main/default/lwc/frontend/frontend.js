@@ -5,7 +5,7 @@ import LoadingGif from '@salesforce/resourceUrl/LoadingGif'
 
 export default class MyComponent extends LightningElement {
     static stylesheets = [FrontEnd];
-    static gifUrl = LoadingGif;
+    gifUrl = LoadingGif;
 
     @track inputText = '';
     @track generatedText = '';
