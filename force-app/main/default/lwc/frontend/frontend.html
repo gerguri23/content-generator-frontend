@@ -20,16 +20,22 @@
           onchange={handleContentTypeChange}
         ></lightning-combobox>
       </div>
-      <div class="slds-p-vertical_x-small tempStyle">
+      <div class="slds-p-vertical_x-small">
+          <span class="slds-m-right_x-small">Temperature</span>
+          <lightning-helptext class="helptext" content="Temperature controls the randomness and creativity of the generated text. 
+          0: Completely deterministic. Same prompt will always produce similar output.
+          0.5: More varied output, but still largely coherent. 
+          1: Creative and diverse response. Higher chance of irrelevant content."></lightning-helptext>
         <lightning-slider
-          label="Temperature (higher value means more creative)"
           value={userTemperature}
           min="0"
           max="1"
           step="0.1"
           onchange={handleTemperatureChange}
+          label="Temperature"
+          variant="label-hidden"
         ></lightning-slider>
-      </div>
+      </div>   
       <div class="slds-p-vertical_x-small">
         <lightning-combobox
           name="recipient"
@@ -41,6 +47,15 @@
         </lightning-combobox>
       </div>
       <div class="slds-p-vertical_x-small">
+        <lightning-textarea
+          name="customRecipient"
+          label="Custom recipient"
+          value={customRecipient}
+          onchange={handleCustomRecipientChange}
+          if:false={customRecipientDisabled}
+        ></lightning-textarea>
+      </div>
+      <div class="slds-p-vertical_x-small">
         <lightning-combobox
           name="industry"
           label="Industry"
@@ -50,9 +65,10 @@
         ></lightning-combobox>
       </div>
       <div class="slds-p-vertical_x-small">
+        <span class="slds-m-right_x-small">Final Prompt</span>
+        <lightning-helptext class="helptext" content="Shows the prompt that will be sent to GPT-4. Updates after each new selection/input. Can be edited by clicking on the text area. "></lightning-helptext>
         <lightning-textarea
           name="finalPrompt"
-          label="Final Prompt"
           value={finalPrompt}
           onchange={handleFinalPromptChange}
         ></lightning-textarea>
@@ -60,10 +76,14 @@
       <div class="slds-m-bottom_large">
         <lightning-button
           label="Generate Text"
-          onclick={handleClick}
+          onclick={handleGenerateClick}
           class="slds-button slds-var-m-top_medium"
-        >
-        </lightning-button>
+        ></lightning-button>
+        <lightning-button
+                label="Refresh Prompt"
+                onclick={handlePromptClick}
+                class="slds-button slds-var-m-top_medium"
+        ></lightning-button>
       </div>
  <!-- Display loading GIF when isLoading is true -->
  <template if:true={isLoading}>

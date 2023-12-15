@@ -10,17 +10,23 @@ export default class MyComponent extends LightningElement {
     @track userContentType = 'email';
     @track userTemperature = 0.5;
     @track userRecipient = 'sales';
+    @track customRecipient = '';
     @track userIndustry = 'business services';
     @track adobeStockLink = '';
     @track finalPrompt = '';
     @track readOnly = true;
     @track isLoading = false;
+    @track customRecipientDisabled = true;
+
 
     get contentTypeOptions() {
         return [
             { label: 'Email', value: 'email' },
             { label: 'Instagram', value: 'instagram' },
-            { label: 'LinkedIn', value: 'linkedin' }
+            { label: 'LinkedIn', value: 'linkedin' },
+            { label: 'White paper', value: 'whitepaper'},
+            { label: 'Blog', value: 'blog'},
+            { label: ' E-book', value: 'e-book'}
         ];
     }
 
@@ -60,12 +66,12 @@ export default class MyComponent extends LightningElement {
 
     handleTextChange(event) {
         this.inputText = event.target.value;
-        this.getPrompt()
+        this.getPrompt();
     }
 
     handleContentTypeChange(event) {
         this.userContentType = event.target.value;
-        this.getPrompt()
+        this.getPrompt();
     }
 
     handleTemperatureChange(event) {
@@ -73,24 +79,40 @@ export default class MyComponent extends LightningElement {
     }
 
     handleRecipientChange(event) {
-        this.userRecipient = event.target.value;
-        this.getPrompt()
-
+        if(event.target.value === "other") {
+            this.customRecipientDisabled = false;
+            this.customRecipient = '';
+        } else {
+            this.customRecipient = '';
+            this.customRecipientDisabled = true;
+            this.userRecipient = event.target.value;
+        }
+        this.getPrompt();
     }
 
+    handleCustomRecipientChange(event) {
+        this.userRecipient = event.target.value;
+        this.getPrompt();
+
+    }
     handleIndustryChange(event) {
         this.userIndustry = event.target.value;
-        this.getPrompt()
+        this.getPrompt();
     }
 
     handleFinalPromptChange(event) {
         this.finalPrompt = event.target.value;
     }
 
-    handleClick() {
+    handleGenerateClick() {
         this.callBackend();
 
     }
+
+    handlePromptClick() {
+        this.getPrompt();
+    }
+
     textCallBack(){
         this.handleCopy();
         alert("Texted is copied");
