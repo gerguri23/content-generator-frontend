@@ -1,5 +1,6 @@
 import { LightningElement, track } from 'lwc';
 import FrontEnd from './frontend.css'
+import loadingGif from './pictures/giphy.gif';
 
 export default class MyComponent extends LightningElement {
     static stylesheets = [FrontEnd];
@@ -13,6 +14,7 @@ export default class MyComponent extends LightningElement {
     @track adobeStockLink = '';
     @track finalPrompt = '';
     @track readOnly = true;
+    @track isLoading = false;
 
     get contentTypeOptions() {
         return [
@@ -103,7 +105,7 @@ export default class MyComponent extends LightningElement {
       }
     async callBackend() {
         try {
-             
+            this.isLoading = true; // Set loading state to true 
             this.generatedText = "Loading...";
 
            /* // Simulate the delay to show the loading state  using Promise()
@@ -155,11 +157,12 @@ export default class MyComponent extends LightningElement {
 
            
 
-            
+        this.isLoading = false;
         } catch (error) {
             console.error('Error:', error);
             this.generatedText = 'Error generating text';
             this.adobeStockLink = 'Error generating the link';
+            this.isLoading = false;
         }
     }
     async getPrompt() {

@@ -65,44 +65,28 @@
         >
         </lightning-button>
       </div>
+ <!-- Display loading GIF when isLoading is true -->
+ <template if:true={isLoading}>
+  <div class="slds-p-vertical_medium slds-clearfix">
+    <img src={loadingGif} alt="Loading..." class="slds-float_right" />
+  </div>
+</template>
 
-      <!-- Render generatedText with HTML formatting -->
-      <div class="cardText">
-        <div
-          slot="footer"
-          if:true={generatedText}
-          class="slds-p-vertical_medium"
-        >
-          <div class="slds-clearfix">
-            <button
-              class="slds-button slds-float_right"
-              if:true={generatedText}
-              onclick={textCallBack}
-            >
-              <lightning-icon
-                icon-name="utility:copy"
-                size="x-small"
-                alternative-text="Copy"
-                title="Copy"
-              >
-              </lightning-icon>
-              &nbsp;Copy Generated Text
-            </button>
-          </div>
-          <div>
-            <lightning-formatted-rich-text
-              class="slds-clearfix"
-              value={generatedText}
-            >
-            </lightning-formatted-rich-text>
-            <lightning-formatted-url
-              class="slds-p-vertical_medium"
-              value={adobeStockLink}
-              target="blank"
-            ></lightning-formatted-url>
-          </div>
-        </div>
-      </div>
+<!-- Render generatedText with HTML formatting -->
+<div class="cardText" if:false={isLoading}>
+  <div slot="footer" if:true={generatedText} class="slds-p-vertical_medium">
+    <div class="slds-clearfix">
+      <button class="slds-button slds-float_right" if:true={generatedText} onclick={textCallBack}>
+        <lightning-icon icon-name="utility:copy" size="x-small" alternative-text="Copy" title="Copy"></lightning-icon>
+        &nbsp;Copy Generated Text
+      </button>
+    </div>
+    <div>
+      <lightning-formatted-rich-text class="slds-clearfix" value={generatedText}></lightning-formatted-rich-text>
+      <lightning-formatted-url class="slds-p-vertical_medium" value={adobeStockLink} target="blank"></lightning-formatted-url>
     </div>
   </div>
+</div>
+</div>
+</div>
 </template>
