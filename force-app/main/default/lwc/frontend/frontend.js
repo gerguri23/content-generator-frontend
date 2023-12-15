@@ -1,9 +1,11 @@
 import { LightningElement, track } from 'lwc';
 import FrontEnd from './frontend.css'
-import loadingGif from './pictures/giphy.gif';
+import LoadingGif from '@salesforce/resourceUrl/LoadingGif'
+
 
 export default class MyComponent extends LightningElement {
     static stylesheets = [FrontEnd];
+    static gifUrl = LoadingGif;
 
     @track inputText = '';
     @track generatedText = '';
